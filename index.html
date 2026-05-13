@@ -319,6 +319,38 @@
       font-weight: 600;
     }
 
+    .main-content ul.skills-list,
+    .main-content ul.quals-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 24px;
+    }
+
+    .main-content ul.quals-list {
+      grid-template-columns: 1fr;
+    }
+
+    .main-content ul.skills-list li,
+    .main-content ul.quals-list li {
+      font-size: 1.05rem;
+      color: var(--gray-700);
+      line-height: 1.8;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .main-content ul.skills-list li::before,
+    .main-content ul.quals-list li::before {
+      content: "•";
+      color: var(--blue-primary);
+      font-weight: 700;
+      position: absolute;
+      left: 0;
+    }
+
     /* Divider */
     .divider {
       height: 1px;
@@ -470,7 +502,7 @@
     <div class="top-nav-inner">
       <div class="nav-brand">
         <div class="nav-logo">DO</div>
-        <span class="nav-brand-text">Drillnex <span>Offshore</span> <span class="light">Co.</span></span>
+        <span class="nav-brand-text">Drillnex <span>Offshore</span> <span class="light">Services</span></span>
       </div>
     </div>
   </nav>
@@ -502,19 +534,23 @@
         <div class="profile-card-body">
           <div class="info-row">
             <span class="label">Company</span>
-            <span class="value">Drillnex Offshore <span style="color:var(--gray-500);font-weight:400;">(Founder)</span></span>
+            <span class="value">Drillnex Offshore Services <span style="color:var(--gray-500);font-weight:400;">(Founder)</span></span>
           </div>
           <div class="info-row">
             <span class="label">Since</span>
             <span class="value">March 2006</span>
           </div>
           <div class="info-row">
-            <span class="label">Age</span>
-            <span class="value">46</span>
+            <span class="label">Born</span>
+            <span class="value">December 2, 1980</span>
           </div>
           <div class="info-row">
             <span class="label">Nationality</span>
-            <span class="value">South Korean / Finnish</span>
+            <span class="value">South Korean</span>
+          </div>
+          <div class="info-row">
+            <span class="label">Country</span>
+            <span class="value">United States of America</span>
           </div>
           <div class="info-row">
             <span class="label">Phone</span>
@@ -534,10 +570,15 @@
       <!-- ═══ MAIN CONTENT ═══ -->
       <article class="main-content">
 
-        <h1><span class="highlight">Hwan Wilson</span> Yang</h1>
+        <h1><span class="highlight">Hwan Wilson Yang</span></h1>
         <div class="role-tag">Chief Executive Officer</div>
         <div class="role-line">
           Chairman, President &amp; CEO of <a href="https://drillnexos.com" target="_blank">Drillnex Offshore Services</a>
+        </div>
+
+        <div class="section-heading">
+          <span class="bar"></span>
+          HIS BIOGRAPHY
         </div>
 
         <p><strong class="name-highlight">Hwan Wilson Yang</strong> (born December 02, 1980) is a distinguished energy executive and the Chief Executive Officer of <a href="https://drillnexos.com" target="_blank">Drillnex Offshore Services</a>, bringing over two decades of international experience in the oil and gas industry. He was born in Busan, South Korea, and moved to Finland at the age of two, where he was raised in Stockholm. This multicultural upbringing played a key role in shaping his global perspective and adaptability in international business environments.</p>
@@ -548,24 +589,44 @@
 
         <p>Through these roles, Hwan developed deep expertise in offshore drilling operations, project execution, and cross-cultural leadership, managing large-scale projects in challenging environments. His ability to integrate technical precision with strategic thinking quickly distinguished him as a leader in the field.</p>
 
-        <p>In March 2006, Hwan established <a href="https://drillnexos.com" target="_blank">Drillnex Offshore Services</a> and has since served as its Chief Executive Officer. Over the past 17 years, he has transformed the company into a leading offshore services provider, driving expansion, operational excellence, and technological innovation. Under his leadership, Drillnex has built a strong reputation for safety, efficiency, and reliability, positioning itself as a trusted partner in the global energy sector.</p>
+        <div class="section-heading">
+          <span class="bar"></span>
+          Skills and Qualifications
+        </div>
 
-        <p>At 46, Hwan continues to lead with vision and purpose, focusing on sustainable growth, innovation, and the future of offshore energy. Known for his disciplined leadership style and forward-thinking approach, he remains committed to developing talent, strengthening global partnerships, and navigating the evolving challenges of the energy industry.</p>
+        <p>Hwan Wilson Yang possesses extensive expertise in offshore drilling operations, petroleum engineering, reservoir management, and energy systems development. His technical and executive background allows him to effectively oversee large-scale offshore projects, optimize operational performance, and implement innovative solutions within the energy sector.</p>
 
-        <div class="divider"></div>
+        <p>His core competencies include:</p>
+
+        <ul class="skills-list">
+          <li>Offshore Drilling Operations and Management</li>
+          <li>Petroleum and Reservoir Engineering</li>
+          <li>Energy Systems and Strategic Planning</li>
+          <li>Project Management and Operational Leadership</li>
+          <li>Offshore Safety and Risk Management</li>
+          <li>Business Development and Corporate Strategy</li>
+          <li>Cross-Cultural Team Leadership</li>
+          <li>International Energy Operations</li>
+          <li>Contract Negotiation and Stakeholder Relations</li>
+          <li>Technology Integration and Process Optimization</li>
+        </ul>
 
         <div class="section-heading">
           <span class="bar"></span>
-          Skills &amp; Qualifications
+          Professional Qualifications
         </div>
 
-        <p>Mr. Yang's considerable experience in consumer industry/retail and as a leader in both the consumer packaged food and dynamic quick-service restaurant industries enable him to bring relevant and actionable insights, including valuable marketing and brand building perspective, to the Board.</p>
+        <ul class="quals-list">
+          <li>Bachelor's Degree in Petroleum Engineering — Helsinki University of Technology (Aalto University)</li>
+          <li>Master's Degree in Energy Systems and Strategic Management — Stanford University</li>
+          <li>Over 20 years of international experience in the oil and gas industry</li>
+          <li>Executive leadership experience across Europe, the Middle East, and offshore global operations</li>
+          <li>Specialized expertise in offshore project execution, drilling technologies, and operational efficiency</li>
+        </ul>
 
-        <p>As CEO of Drillnex, which has significant global operations, he brings considerable insight into the operating, regulatory and cultural complexities associated with the Company's global footprint.</p>
+        <p>In March 2006, Hwan established <a href="https://drillnexos.com" target="_blank">Drillnex Offshore Services</a> and has since served as its Chief Executive Officer. Over the past 17 years, he has transformed the company into a leading offshore services provider, driving expansion, operational excellence, and technological innovation. Under his leadership, Drillnex has built a strong reputation for safety, efficiency, and reliability, positioning itself as a trusted partner in the global energy sector.</p>
 
-        <p>He has further demonstrated his skills and expertise in technology and innovation in his leadership of global strategy and innovation, where business transactions increasingly occur through digital channels, and has played a key role in accelerating growth through innovation at the company by prioritizing these areas within its strategy.</p>
-
-        <p>Further, Mr. Yang's recognized leadership, strategy and risk management abilities have allowed him to guide his organization through the dynamic challenges and opportunities posed by current global operating conditions, including with respect to key environmental sustainability strategies, which have been highly valuable to the Board as it oversees the Company's long-term growth and operating strategy.</p>
+        <p>At 46, Hwan continues to lead with vision and purpose, focusing on sustainable growth, innovation, and the future of offshore energy. Known for his disciplined leadership style and forward-thinking approach, he remains committed to developing talent, strengthening global partnerships, and navigating the evolving challenges of the energy industry.</p>
 
       </article>
     </div>
@@ -578,7 +639,7 @@
       <div class="footer-top">
         <div class="footer-brand-col">
           <div class="footer-logo-round">DO</div>
-          <div class="brand-name">Drillnex <span>Offshore</span> Co.</div>
+          <div class="brand-name">Drillnex <span>Offshore</span> Services</div>
           <p>Committed to leadership, innovation, and sustainable growth across the global energy sector.</p>
         </div>
         <div class="footer-col">
@@ -590,7 +651,6 @@
         <div class="footer-col">
           <h5>Company</h5>
           <a href="https://drillnexos.com" target="_blank">Drillnex Offshore</a>
-          <a href="#">Leadership</a>
         </div>
       </div>
 
