@@ -24,6 +24,7 @@
       --blue-hover:  #08358a;
       --gray-900:    #111827;
       --gray-700:    #374151;
+      --gray-600:    #4b5563;
       --gray-500:    #6b7280;
       --gray-300:    #d1d5db;
       --gray-200:    #e5e7eb;
@@ -33,6 +34,7 @@
       --shadow-sm:   0 1px 2px 0 rgba(0,0,0,0.05);
       --shadow-md:   0 4px 6px -1px rgba(0,0,0,0.06), 0 2px 4px -1px rgba(0,0,0,0.04);
       --shadow-lg:   0 10px 25px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.04);
+      --shadow-xl:   0 20px 40px -5px rgba(0,0,0,0.12), 0 8px 12px -6px rgba(0,0,0,0.06);
       --radius-sm:   6px;
       --radius-md:   10px;
       --radius-lg:   16px;
@@ -51,9 +53,10 @@
       color: var(--gray-900);
       background: var(--gray-50);
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    img { max-width: 100%; display: block; }
+    img { max-width: 100%; display: block; height: auto; }
     a { color: var(--blue-primary); text-decoration: none; transition: color 0.15s; }
     a:hover { color: var(--blue-hover); }
 
@@ -91,20 +94,22 @@
       width: 38px;
       height: 38px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--blue-mid), var(--blue-primary));
+      background: #000000;
       color: var(--white);
       display: grid;
       place-items: center;
       font-weight: 800;
       font-size: 0.8rem;
       letter-spacing: 0.5px;
+      flex-shrink: 0;
     }
 
     .nav-brand-text {
-      font-size: 1rem;
-      font-weight: 700;
+      font-size: clamp(0.75rem, 1.2vw, 0.85rem);
+      font-weight: 600;
       color: var(--gray-900);
-      letter-spacing: -0.3px;
+      letter-spacing: -0.2px;
+      white-space: nowrap;
     }
     .nav-brand-text span { color: var(--blue-primary); }
     .nav-brand-text .light { font-weight: 400; color: var(--gray-500); }
@@ -138,7 +143,7 @@
     .container {
       max-width: var(--max-w);
       margin: 0 auto;
-      padding: 40px 24px 80px;
+      padding: clamp(24px, 4vw, 40px) clamp(16px, 3vw, 24px) clamp(48px, 8vw, 80px);
     }
 
     /* ═══════════════════════════════════════
@@ -148,9 +153,9 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      font-size: 0.82rem;
+      font-size: clamp(0.75rem, 1vw, 0.82rem);
       color: var(--gray-500);
-      margin-bottom: 40px;
+      margin-bottom: clamp(24px, 4vw, 40px);
       flex-wrap: wrap;
     }
 
@@ -178,7 +183,7 @@
     .two-col {
       display: grid;
       grid-template-columns: 380px 1fr;
-      gap: 56px;
+      gap: clamp(32px, 5vw, 56px);
       align-items: start;
     }
 
@@ -191,21 +196,32 @@
       box-shadow: var(--shadow-sm);
       border: 1px solid var(--gray-200);
       overflow: hidden;
+      position: sticky;
+      top: 88px;
+      transition: box-shadow 0.3s ease;
+    }
+    .profile-card:hover {
+      box-shadow: var(--shadow-md);
     }
 
     .profile-card-header {
-      padding: 36px 28px 12px;
+      padding: clamp(24px, 3vw, 36px) clamp(20px, 3vw, 28px) 12px;
       text-align: center;
     }
 
     .profile-avatar {
-      width: 120px;
-      height: 120px;
+      width: clamp(100px, 12vw, 120px);
+      height: clamp(100px, 12vw, 120px);
       border-radius: 50%;
       overflow: hidden;
       border: 4px solid var(--gray-200);
-      margin: 0 auto 16px;
+      margin: 0 auto clamp(12px, 2vw, 16px);
       box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+    .profile-avatar:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
     }
 
     .profile-avatar img {
@@ -215,7 +231,7 @@
     }
 
     .profile-card-header h3 {
-      font-size: 1.1rem;
+      font-size: clamp(1rem, 1.5vw, 1.1rem);
       font-weight: 700;
       color: var(--gray-900);
       letter-spacing: -0.2px;
@@ -223,43 +239,44 @@
     }
 
     .profile-card-header p {
-      font-size: 0.78rem;
+      font-size: clamp(0.75rem, 1vw, 0.78rem);
       color: var(--gray-500);
       margin-top: 2px;
       font-weight: 500;
     }
 
     .profile-card-body {
-      padding: 12px 28px 28px;
+      padding: 12px clamp(20px, 3vw, 28px) clamp(24px, 3vw, 28px);
     }
 
     .profile-divider {
       height: 1px;
       background: var(--gray-200);
-      margin: 0 24px;
+      margin: 0 clamp(16px, 2vw, 24px);
     }
 
     .info-row {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      padding: 12px 0;
+      padding: clamp(10px, 1.2vw, 12px) 0;
       border-bottom: 1px solid var(--gray-100);
+      gap: 8px;
     }
     .info-row:last-child { border-bottom: none; }
 
     .info-row .label {
-      font-size: 0.7rem;
+      font-size: clamp(0.68rem, 0.9vw, 0.7rem);
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.6px;
       color: var(--gray-500);
-      min-width: 70px;
+      min-width: clamp(65px, 8vw, 70px);
       flex-shrink: 0;
     }
 
     .info-row .value {
-      font-size: 0.9rem;
+      font-size: clamp(0.82rem, 1.1vw, 0.9rem);
       font-weight: 500;
       color: var(--gray-900);
       text-align: right;
@@ -269,6 +286,7 @@
     .info-row .value a {
       font-weight: 500;
       color: var(--blue-primary);
+      word-break: break-word;
     }
 
     /* ═══════════════════════════════════════
@@ -277,10 +295,10 @@
     .main-content { padding-top: 4px; }
 
     .main-content h1 {
-      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-size: clamp(2rem, 6vw, 4rem);
       font-weight: 800;
       line-height: 1.05;
-      letter-spacing: -1.5px;
+      letter-spacing: clamp(-0.8px, -1.5vw, -1.5px);
       color: var(--gray-900);
       margin-bottom: 6px;
     }
@@ -291,27 +309,27 @@
       display: inline-block;
       background: var(--blue-light);
       color: var(--blue-primary);
-      font-size: 0.82rem;
+      font-size: clamp(0.72rem, 1vw, 0.82rem);
       font-weight: 600;
-      padding: 6px 16px;
+      padding: clamp(5px, 0.6vw, 6px) clamp(12px, 1.5vw, 16px);
       border-radius: 9999px;
-      margin-bottom: 20px;
+      margin-bottom: clamp(16px, 2vw, 20px);
     }
 
     .main-content .role-line {
-      font-size: clamp(1rem, 1.4vw, 1.3rem);
+      font-size: clamp(0.9rem, 1.6vw, 1.3rem);
       font-weight: 500;
       color: var(--gray-500);
-      margin-bottom: 32px;
+      margin-bottom: clamp(24px, 3vw, 32px);
       line-height: 1.4;
     }
     .main-content .role-line a { font-weight: 600; color: var(--blue-primary); }
 
     .main-content p {
-      font-size: 1.05rem;
+      font-size: clamp(0.9rem, 1.2vw, 1.05rem);
       color: var(--gray-700);
-      line-height: 1.8;
-      margin-bottom: 20px;
+      line-height: clamp(1.7, 2vw, 1.8);
+      margin-bottom: clamp(16px, 2vw, 20px);
     }
 
     .main-content p strong.name-highlight {
@@ -323,10 +341,10 @@
     .main-content ul.quals-list {
       list-style: none;
       padding: 0;
-      margin: 0 0 20px;
+      margin: 0 0 clamp(16px, 2vw, 20px);
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 8px 24px;
+      gap: clamp(6px, 1vw, 8px) clamp(16px, 3vw, 24px);
     }
 
     .main-content ul.quals-list {
@@ -335,10 +353,10 @@
 
     .main-content ul.skills-list li,
     .main-content ul.quals-list li {
-      font-size: 1.05rem;
+      font-size: clamp(0.9rem, 1.2vw, 1.05rem);
       color: var(--gray-700);
-      line-height: 1.8;
-      padding-left: 20px;
+      line-height: clamp(1.7, 2vw, 1.8);
+      padding-left: clamp(16px, 2vw, 20px);
       position: relative;
     }
 
@@ -355,15 +373,15 @@
     .divider {
       height: 1px;
       background: var(--gray-200);
-      margin: 44px 0 32px;
+      margin: clamp(32px, 4vw, 44px) 0 clamp(24px, 3vw, 32px);
     }
 
     .main-content .section-heading {
-      font-size: 1.4rem;
+      font-size: clamp(1.1rem, 1.8vw, 1.4rem);
       font-weight: 700;
       color: var(--gray-900);
       letter-spacing: -0.4px;
-      margin-bottom: 20px;
+      margin-bottom: clamp(16px, 2vw, 20px);
       display: flex;
       align-items: center;
       gap: 12px;
@@ -372,48 +390,50 @@
     .main-content .section-heading .bar {
       display: inline-block;
       width: 4px;
-      height: 24px;
+      height: clamp(18px, 2.5vw, 24px);
       background: var(--blue-primary);
       border-radius: 2px;
+      flex-shrink: 0;
     }
 
     /* ═══════════════════════════════════════
        FOOTER
        ═══════════════════════════════════════ */
     footer {
-      background: #2d6fd9;
+      background: #000000;
       color: var(--white);
     }
 
     .footer-inner {
       max-width: var(--max-w);
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 clamp(16px, 3vw, 24px);
     }
 
     .footer-top {
-      padding: 56px 0 44px;
+      padding: clamp(40px, 5vw, 56px) 0 clamp(32px, 4vw, 44px);
       display: grid;
       grid-template-columns: 2.2fr 1fr 1fr 1fr;
-      gap: 48px;
+      gap: clamp(28px, 4vw, 48px);
     }
 
     .footer-brand-col .footer-logo-round {
-      width: 46px;
-      height: 46px;
+      width: clamp(40px, 4vw, 46px);
+      height: clamp(40px, 4vw, 46px);
       border-radius: 50%;
-      background: var(--white);
-      color: var(--blue-primary);
+      background: #000000;
+      color: var(--white);
       display: grid;
       place-items: center;
       font-weight: 800;
-      font-size: 0.9rem;
+      font-size: clamp(0.82rem, 1vw, 0.9rem);
       letter-spacing: 0.5px;
       margin-bottom: 14px;
+      border: 1px solid rgba(255,255,255,0.15);
     }
 
     .footer-brand-col .brand-name {
-      font-size: 1.05rem;
+      font-size: clamp(0.95rem, 1.2vw, 1.05rem);
       font-weight: 700;
       color: var(--white);
       letter-spacing: -0.2px;
@@ -422,24 +442,24 @@
     .footer-brand-col .brand-name span { color: rgba(255,255,255,0.5); font-weight: 400; }
 
     .footer-brand-col p {
-      font-size: 0.88rem;
+      font-size: clamp(0.82rem, 1vw, 0.88rem);
       color: rgba(255,255,255,0.7);
       line-height: 1.65;
       max-width: 280px;
     }
 
     .footer-col h5 {
-      font-size: 0.72rem;
+      font-size: clamp(0.68rem, 0.9vw, 0.72rem);
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1.2px;
       color: rgba(255,255,255,0.4);
-      margin-bottom: 18px;
+      margin-bottom: clamp(14px, 2vw, 18px);
     }
 
     .footer-col a {
       display: block;
-      font-size: 0.88rem;
+      font-size: clamp(0.82rem, 1vw, 0.88rem);
       color: rgba(255,255,255,0.8);
       padding: 4px 0;
       transition: all 0.15s;
@@ -448,7 +468,7 @@
 
     .footer-bottom {
       border-top: 1px solid rgba(255,255,255,0.12);
-      padding: 20px 0;
+      padding: clamp(16px, 2vw, 20px) 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -457,49 +477,396 @@
     }
 
     .footer-bottom span {
-      font-size: 0.8rem;
+      font-size: clamp(0.75rem, 0.9vw, 0.8rem);
       color: rgba(255,255,255,0.5);
     }
 
     .footer-bottom .legal-links {
       display: flex;
-      gap: 24px;
+      gap: clamp(16px, 2vw, 24px);
+      flex-wrap: wrap;
     }
 
     .footer-bottom .legal-links a {
-      font-size: 0.8rem;
+      font-size: clamp(0.75rem, 0.9vw, 0.8rem);
       color: rgba(255,255,255,0.5);
       transition: color 0.15s;
     }
     .footer-bottom .legal-links a:hover { color: var(--white); }
 
     /* ═══════════════════════════════════════
-       RESPONSIVE
+       RESPONSIVE BREAKPOINTS
        ═══════════════════════════════════════ */
-    @media (max-width: 960px) {
-      .two-col { grid-template-columns: 1fr; gap: 40px; }
-      .profile-card { max-width: 400px; margin: 0 auto; }
-      .footer-top { grid-template-columns: 1fr 1fr; gap: 36px; }
-      .footer-brand-col { grid-column: 1 / -1; }
+
+    /* ===== Large Tablets / Small Laptops (≤1024px) ===== */
+    @media (max-width: 1024px) {
+      .two-col {
+        grid-template-columns: 320px 1fr;
+        gap: 40px;
+      }
+      .footer-top {
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 36px;
+      }
     }
 
+    /* ===== Tablets (≤900px) - Stack sidebar on top ===== */
+    @media (max-width: 900px) {
+      .two-col {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+      .profile-card {
+        max-width: 480px;
+        margin: 0 auto;
+        position: static;
+        box-shadow: var(--shadow-md);
+      }
+      .profile-card-header {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        text-align: left;
+        padding: 24px 24px 16px;
+      }
+      .profile-avatar {
+        width: 90px;
+        height: 90px;
+        margin: 0;
+        flex-shrink: 0;
+      }
+      .profile-card-header h3 {
+        font-size: 1.2rem;
+      }
+      .profile-card-header p {
+        font-size: 0.82rem;
+        margin-top: 4px;
+      }
+      .profile-card-body {
+        padding: 8px 24px 24px;
+      }
+      .info-row .label {
+        font-size: 0.72rem;
+        min-width: 75px;
+      }
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+      .footer-brand-col { grid-column: 1 / -1; }
+      .footer-brand-col p { max-width: 100%; }
+      .main-content ul.skills-list {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    /* ===== Small Tablets / Large Phones (≤640px) ===== */
     @media (max-width: 640px) {
-      .container { padding: 20px 12px 60px; }
-      .top-nav-inner { padding: 0 12px; }
+      .container { padding: 20px 16px 60px; }
+      .top-nav-inner { padding: 0 16px; }
       .nav-brand-text { display: none; }
-      .profile-card { max-width: 100%; margin: 0 auto; }
-      .profile-card-header { padding: 24px 16px 8px; }
-      .profile-avatar { width: 80px; height: 80px; margin-bottom: 10px; }
-      .profile-card-header h3 { font-size: 0.95rem; }
-      .profile-card-header p { font-size: 0.7rem; }
-      .profile-card-body { padding: 6px 16px 20px; }
-      .info-row { padding: 8px 0; }
-      .info-row .value { font-size: 0.8rem; }
-      .info-row .label { font-size: 0.65rem; }
-      .footer-top { grid-template-columns: 1fr; gap: 28px; }
+
+      /* Breadcrumb compact */
+      .breadcrumb { margin-bottom: 20px; font-size: 0.75rem; }
+
+      /* Profile Card - Horizontal layout falls back to stacked */
+      .two-col { gap: 28px; }
+      .profile-card {
+        max-width: 100%;
+        margin: 0;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-lg);
+      }
+      .profile-card-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 28px 20px 12px;
+        gap: 12px;
+      }
+      .profile-avatar {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 8px;
+      }
+      .profile-card-header h3 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        letter-spacing: -0.2px;
+        line-height: 1.3;
+      }
+      .profile-card-header p {
+        font-size: 1rem;
+        margin-top: 4px;
+        color: var(--gray-600);
+      }
+      .profile-card-body {
+        padding: 12px 20px 28px;
+      }
+      .info-row {
+        padding: 14px 0;
+        gap: 10px;
+      }
+      .info-row .label {
+        font-size: 0.78rem;
+        min-width: 75px;
+        font-weight: 600;
+      }
+      .info-row .value {
+        font-size: 0.92rem;
+        font-weight: 500;
+        text-align: right;
+        line-height: 1.6;
+      }
+      
+      /* Main Content - Compact mobile fonts */
+      .main-content h1 {
+        font-size: 2rem;
+        letter-spacing: -0.5px;
+        margin-bottom: 8px;
+      }
+      .main-content .role-tag {
+        font-size: 0.75rem;
+        padding: 5px 12px;
+        margin-bottom: 14px;
+      }
+      .main-content .role-line {
+        font-size: 0.92rem;
+        margin-bottom: 22px;
+      }
+      .main-content p {
+        font-size: 0.95rem;
+        line-height: 1.72;
+        margin-bottom: 16px;
+      }
+      .main-content .section-heading {
+        font-size: 1.15rem;
+        margin-bottom: 14px;
+      }
+      .main-content .section-heading .bar {
+        height: 18px;
+      }
+      .main-content ul.skills-list,
+      .main-content ul.quals-list {
+        gap: 6px 16px;
+        margin-bottom: 16px;
+      }
+      .main-content ul.skills-list {
+        grid-template-columns: 1fr;
+      }
+      .main-content ul.skills-list li,
+      .main-content ul.quals-list li {
+        font-size: 0.95rem;
+        padding-left: 18px;
+        line-height: 1.72;
+      }
+      
+      /* Footer */
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 36px 0 28px;
+      }
       .footer-brand-col { grid-column: 1; }
-      .footer-bottom { flex-direction: column; text-align: center; }
-      .breadcrumb { margin-bottom: 28px; }
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+      }
+      .footer-bottom .legal-links {
+        justify-content: center;
+      }
+    }
+
+    /* ===== Small Phones (≤480px) ===== */
+    @media (max-width: 480px) {
+      .container { padding: 16px 12px 48px; }
+      .top-nav-inner { padding: 0 12px; }
+      .top-nav { height: 56px; }
+      .nav-logo {
+        width: 34px;
+        height: 34px;
+        font-size: 0.7rem;
+      }
+
+      /* Breadcrumb */
+      .breadcrumb {
+        font-size: 0.7rem;
+        gap: 4px;
+        margin-bottom: 16px;
+      }
+      .breadcrumb svg { width: 12px; height: 12px; }
+
+      .two-col { gap: 24px; }
+
+      /* Profile card */
+      .profile-card { border-radius: var(--radius-sm); }
+      .profile-card-header { padding: 24px 16px 10px; }
+      .profile-avatar {
+        width: 100px;
+        height: 100px;
+        border-width: 3px;
+      }
+      .profile-card-header h3 { font-size: 1.2rem; }
+      .profile-card-header p { font-size: 0.85rem; }
+      .profile-card-body { padding: 8px 16px 24px; }
+      .info-row {
+        padding: 12px 0;
+        gap: 8px;
+      }
+      .info-row .label {
+        font-size: 0.7rem;
+        min-width: 68px;
+      }
+      .info-row .value {
+        font-size: 0.85rem;
+      }
+      .profile-divider { margin: 0 12px; }
+
+      /* Main content */
+      .main-content h1 {
+        font-size: 1.65rem;
+        letter-spacing: -0.3px;
+      }
+      .main-content .role-tag {
+        font-size: 0.7rem;
+        padding: 4px 10px;
+      }
+      .main-content .role-line {
+        font-size: 0.85rem;
+        margin-bottom: 18px;
+      }
+      .main-content p {
+        font-size: 0.9rem;
+        line-height: 1.65;
+        margin-bottom: 14px;
+      }
+      .main-content .section-heading {
+        font-size: 1.05rem;
+        margin-bottom: 12px;
+      }
+      .main-content .section-heading .bar {
+        height: 16px;
+      }
+      .main-content ul.skills-list,
+      .main-content ul.quals-list {
+        gap: 4px 12px;
+        margin-bottom: 14px;
+      }
+      .main-content ul.skills-list li,
+      .main-content ul.quals-list li {
+        font-size: 0.9rem;
+        padding-left: 16px;
+        line-height: 1.65;
+      }
+
+      /* Footer */
+      .footer-top {
+        padding: 28px 0 24px;
+        gap: 24px;
+      }
+      .footer-brand-col .brand-name { font-size: 0.9rem; }
+      .footer-brand-col p { font-size: 0.8rem; }
+      .footer-col a { font-size: 0.8rem; padding: 3px 0; }
+      .footer-bottom { padding: 14px 0; gap: 6px; }
+      .footer-bottom span { font-size: 0.7rem; }
+    }
+
+    /* ===== Extra Small Phones (≤360px) ===== */
+    @media (max-width: 360px) {
+      .container { padding: 12px 10px 40px; }
+      .top-nav-inner { padding: 0 10px; }
+      
+      .profile-card-header { padding: 20px 12px 8px; }
+      .profile-avatar {
+        width: 85px;
+        height: 85px;
+        border-width: 3px;
+      }
+      .profile-card-header h3 { font-size: 1.05rem; }
+      .profile-card-header p { font-size: 0.78rem; }
+      .profile-card-body { padding: 6px 12px 20px; }
+      .info-row { padding: 10px 0; gap: 6px; }
+      .info-row .label {
+        font-size: 0.65rem;
+        min-width: 60px;
+        letter-spacing: 0.4px;
+      }
+      .info-row .value { font-size: 0.8rem; }
+
+      .main-content h1 { font-size: 1.4rem; }
+      .main-content .role-tag { font-size: 0.65rem; padding: 3px 8px; }
+      .main-content .role-line { font-size: 0.8rem; }
+      .main-content p { font-size: 0.85rem; line-height: 1.6; }
+      .main-content .section-heading { font-size: 0.95rem; }
+      .main-content ul.skills-list li,
+      .main-content ul.quals-list li { font-size: 0.85rem; }
+
+      .footer-top { gap: 20px; padding: 24px 0 20px; }
+      .footer-brand-col .brand-name { font-size: 0.85rem; }
+      .footer-brand-col p { font-size: 0.76rem; }
+    }
+
+    /* ===== Large Screens (≥1400px) ===== */
+    @media (min-width: 1400px) {
+      .container {
+        padding: 48px 24px 100px;
+      }
+      .two-col {
+        grid-template-columns: 400px 1fr;
+        gap: 64px;
+      }
+      .main-content h1 {
+        font-size: 4.2rem;
+      }
+      .main-content p {
+        font-size: 1.1rem;
+      }
+    }
+
+    /* ===== Print styles ===== */
+    @media print {
+      .top-nav, footer { display: none; }
+      .container { padding: 0; max-width: 100%; }
+      .profile-card { box-shadow: none; border: 1px solid #ddd; position: static; }
+      .two-col { gap: 32px; }
+      body { background: white; color: black; font-size: 12pt; }
+      a { color: black; }
+    }
+
+    /* ===== Reduced motion preference ===== */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      html { scroll-behavior: auto; }
+    }
+
+    /* ===== Dark mode support ===== */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --gray-50: #0f1117;
+        --gray-100: #1a1d27;
+        --gray-200: #2a2d3a;
+        --gray-300: #3e4250;
+        --gray-500: #9ca3af;
+        --gray-600: #b0b7c4;
+        --gray-700: #d1d5db;
+        --gray-900: #f3f4f6;
+        --blue-light: #0a1a3e;
+        --white: #161922;
+        --shadow-sm: 0 1px 2px 0 rgba(0,0,0,0.3);
+        --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.4);
+        --shadow-lg: 0 10px 25px -3px rgba(0,0,0,0.5);
+        --shadow-xl: 0 20px 40px -5px rgba(0,0,0,0.6);
+      }
+      body { background: #0d0f16; }
+      .top-nav { border-bottom-color: var(--gray-200); }
+      .profile-card { border-color: var(--gray-200); }
+      .profile-avatar { border-color: var(--gray-300); }
+      .info-row { border-bottom-color: var(--gray-100); }
+      .breadcrumb svg { color: var(--gray-500); }
+      a:hover { color: #4b8bff; }
     }
   </style>
 </head>
@@ -536,13 +903,15 @@
           <div class="profile-avatar">
             <img src="image.jpeg" alt="Hwan Wilson Yang" />
           </div>
-          <h3>Hwan Wilson Yang</h3>
-          <p>Chief Executive Officer</p>
+          <div>
+            <h3>Hwan Wilson Yang</h3>
+            <p>Chief Executive Officer</p>
+          </div>
         </div>
         <div class="profile-card-body">
           <div class="info-row">
             <span class="label">Company</span>
-            <span class="value"><strong><span style="color:var(--gray-900);">Drillnex</span> <span style="color:var(--blue-primary);">Offshore Services</span></strong><br><span style="color:var(--gray-500);font-weight:400;">(Founder)</span></span>
+            <span class="value"><strong><span style="color:var(--gray-900);">Drillnex</span> <span style="color:var(--blue-primary);">Offshore</span></strong><br><strong><span style="color:var(--blue-primary);">Services</span> <span style="color:var(--gray-500);font-weight:400;">(Founder)</span></strong></span>
           </div>
           <div class="info-row">
             <span class="label">Since</span>
@@ -642,7 +1011,6 @@
       <div class="footer-top">
         <div class="footer-brand-col">
           <div class="footer-logo-round">DO</div>
-          <div class="brand-name"><strong style="color:var(--white);">Drillnex</strong> <strong style="color:var(--white);">Offshore</strong> <strong style="color:var(--white);">Services</strong></div>
           <p>Committed to leadership, innovation, and sustainable growth across the global energy sector.</p>
         </div>
         <div class="footer-col">
@@ -658,7 +1026,7 @@
       </div>
 
       <div class="footer-bottom">
-        <span>&copy; 2026 <strong><span style="color:var(--gray-900);">Drillnex</span> <span style="color:var(--blue-primary);">Offshore Services</span></strong>. All rights reserved.</span>
+        <span>&copy; 2026 <strong><span style="color:var(--gray-500);font-weight:300;">Drillnex</span> <span style="color:var(--gray-500);font-weight:300;">Offshore</span> <span style="color:var(--gray-500);font-weight:300;">Services</span></strong>.<br>All rights reserved.</span>
       </div>
 
     </div>
